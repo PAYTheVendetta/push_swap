@@ -6,14 +6,14 @@
 /*   By: aialonso <aialonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 11:36:47 by aialonso          #+#    #+#             */
-/*   Updated: 2025/11/30 13:10:51 by aialonso         ###   ########.fr       */
+/*   Updated: 2025/11/30 18:30:42 by aialonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-int sortnum(int *num)
+int	sortnum(int *num)
 {
 	int	n;
 	int	tem;
@@ -21,7 +21,7 @@ int sortnum(int *num)
 	n = 0;
 	while (num[n] && num[n + 1])
 	{
-		if(num[n] > num[n + 1])
+		if (num[n] > num[n + 1])
 		{
 			tem = num[n];
 			num[n] = num[n + 1];
@@ -33,12 +33,12 @@ int sortnum(int *num)
 	return (0);
 }
 
-void scramble_numbers(t_stack *a, t_data *data, int *num)
+void	scramble_numbers(t_stack *a, t_data *data, int *num)
 {
 	int	n;
 	int	i;
 	int	count;
-	
+
 	n = -1;
 	i = -1;
 	count = data->count;
@@ -56,7 +56,7 @@ void scramble_numbers(t_stack *a, t_data *data, int *num)
 	}
 }
 
-int normalizer_arry(t_stack *a, t_data *data)
+int	normalizer_arry(t_stack *a, t_data *data)
 {
 	int	*num;
 	int	n;

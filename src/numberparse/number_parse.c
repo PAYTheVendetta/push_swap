@@ -6,7 +6,7 @@
 /*   By: aialonso <aialonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 13:18:08 by aialonso          #+#    #+#             */
-/*   Updated: 2025/11/30 10:59:55 by aialonso         ###   ########.fr       */
+/*   Updated: 2025/11/30 18:31:38 by aialonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int	isnum(char **arg, t_data *data)
 
 long	validate_and_count(t_data *data, int argc, char **argv)
 {
-	int i;
-	char *arg;
-	int count;
+	int		i;
+	char	*arg;
+	int		count;
 
 	i = 0;
 	while (++i < argc)
@@ -53,10 +53,11 @@ long	validate_and_count(t_data *data, int argc, char **argv)
 	}
 	return (data->count);
 }
-int handle_num(char **arg, t_stack *a, long i)
+
+int	handle_num(char **arg, t_stack *a, long i)
 {
 	char	number[31];
-	int				n;
+	int		n;
 
 	number[30] = '\0';
 	n = 0;
@@ -72,13 +73,13 @@ int handle_num(char **arg, t_stack *a, long i)
 	return (0);
 }
 
-int buil_number_arry(t_data *data, t_stack *a, char **argv, int argc)
+int	buil_number_arry(t_data *data, t_stack *a, char **argv, int argc)
 {
 	int			i;
 	char		*arg;
 	long		count;
 
-	count = data->count;	
+	count = data->count;
 	i = 0;
 	while (++i < argc)
 	{

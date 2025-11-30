@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aialonso <aialonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/29 16:57:38 by aialonso          #+#    #+#             */
-/*   Updated: 2025/11/30 18:32:46 by aialonso         ###   ########.fr       */
+/*   Created: 2025/11/30 18:54:31 by aialonso          #+#    #+#             */
+/*   Updated: 2025/11/30 19:13:12 by aialonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "push_swap.h"
 
-# include "ft_printf.h"
+int	update_head(int a, int b)
+{
+	int	val;
 
-int	ft_isdigit(int c);
-int	ft_isspace(int c);
-int	ft_atoi(char *nptr);
-
-#endif
+	val = a % b;
+	if (val < 0)
+		val += b;
+	return (val);
+}

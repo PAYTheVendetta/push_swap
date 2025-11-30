@@ -6,7 +6,7 @@
 #    By: aialonso <aialonso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/29 12:33:05 by aialonso          #+#    #+#              #
-#    Updated: 2025/11/30 12:09:18 by aialonso         ###   ########.fr        #
+#    Updated: 2025/11/30 22:56:15 by aialonso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,12 @@ LIB = lib
 
 SOURCES =   $(addprefix $(SRC_PATH)/,\
 			push_swap.c\
+			sort_algorit.c\
+			utils/utils.c\
+			sorting_ops/push.c\
+			sorting_ops/swap.c\
+			sorting_ops/rotate.c\
+			sorting_ops/reverse_rotate.c\
 			numberparse/number_parse.c\
 			numberparse/normalicer_arry.c)
 

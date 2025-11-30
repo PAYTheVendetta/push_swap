@@ -6,7 +6,7 @@
 /*   By: aialonso <aialonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 13:33:25 by aialonso          #+#    #+#             */
-/*   Updated: 2025/11/30 14:06:48 by aialonso         ###   ########.fr       */
+/*   Updated: 2025/11/30 22:58:00 by aialonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	swap(t_stack *x)
 {
-	int tem;
+	int	tem;
 
 	if (x->maxnum <= 1)
 		return ;
@@ -24,20 +24,21 @@ void	swap(t_stack *x)
 	x->stack[x->head + 1] = tem;
 }
 
-void sa(t_stack *a)
+void	sa(t_stack *a)
 {
 	swap(a);
-	ft_printf("sa");
-}
-void sb(t_stack *b)
-{
-	swap(b);
-	ft_printf("sb");
+	ft_printf("sa\n");
 }
 
-void ss(t_stack *a, t_stack *b)
+void	sb(t_stack *b)
+{
+	swap(b);
+	ft_printf("sb\n");
+}
+
+void	ss(t_stack *a, t_stack *b)
 {
 	swap(a);
 	swap(b);
-	ft_printf("ss");
+	ft_printf("ss\n");
 }
