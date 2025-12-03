@@ -6,15 +6,15 @@
 /*   By: aialonso <aialonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 12:02:02 by aialonso          #+#    #+#             */
-/*   Updated: 2025/11/30 09:45:55 by aialonso         ###   ########.fr       */
+/*   Updated: 2025/12/01 23:11:23 by aialonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *nptr)
+long	ft_atoi(char *nptr)
 {
-	int		n[4];
+	long	n[4];
 
 	n[0] = 0;
 	n[1] = 1;

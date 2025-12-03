@@ -6,7 +6,7 @@
 /*   By: aialonso <aialonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 13:18:08 by aialonso          #+#    #+#             */
-/*   Updated: 2025/11/30 18:31:38 by aialonso         ###   ########.fr       */
+/*   Updated: 2025/12/02 17:06:22 by aialonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,39 @@ int	handle_num(char **arg, t_stack *a, long i)
 	n = 0;
 	while (ft_isspace(**arg))
 		(*arg)++;
-	while (ft_isdigit(**arg))
+	while (ft_isdigit(**arg) || (**arg) == '-' || (**arg) == '+')
 	{
 		number[n++] = (**arg);
 		(*arg)++;
 	}
 	number[n] = '\0';
 	a->stack[i] = ft_atoi(number);
+	if (a->stack[i] > INT_MAX || a->stack[i] < INT_MIN)
+		return (-1);
 	return (0);
 }
+
+int	check_nums(t_stack *a)
+{
+	int	n;
+	int	i;
+	int	len;
+
+	len = a->size - 1;
+	n = -1;
+	while ((a->size - 1) > ++n)
+	{
+		i = 0;
+		while (len >= ++i)
+		{
+			if (a->stack[n] == a->stack[n + i])
+				return (-1);
+		}
+		len--;
+	}
+	return (0);
+}
+
 
 int	buil_number_arry(t_data *data, t_stack *a, char **argv, int argc)
 {
@@ -91,5 +115,7 @@ int	buil_number_arry(t_data *data, t_stack *a, char **argv, int argc)
 			count--;
 		}
 	}
+	if (check_nums(a) == -1)
+		return (-1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: aialonso <aialonso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/29 12:33:05 by aialonso          #+#    #+#              #
-#    Updated: 2025/11/30 22:56:15 by aialonso         ###   ########.fr        #
+#    Updated: 2025/12/03 16:13:29 by aialonso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,11 @@ CC = cc
 
 OBJECTS= $(SOURCES:.c=.o)
 
+X ?= 10
+
+ARGS = $(shell shuf -i 1-100000 -n $(X))
+
+
 $(COM_LIB):
 	make -C $(LIB)
 
@@ -66,5 +71,8 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all rclean
+
+test:
+	./$(NAME) $(ARGS)
 
 .PHONY: all clean rclean fclean re

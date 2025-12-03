@@ -6,7 +6,7 @@
 /*   By: aialonso <aialonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 12:35:27 by aialonso          #+#    #+#             */
-/*   Updated: 2025/11/30 22:49:25 by aialonso         ###   ########.fr       */
+/*   Updated: 2025/12/03 16:12:55 by aialonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ typedef struct s_stack
 	long	size;
 	long	maxnum;
 	long	head;
-	int		*stack;
+	long	*stack;
 }	t_stack;
 
 typedef struct s_data
 {
 	long	count;
 	long	argc;
+	long	k;
 }	t_data;
 
 /* parse_data */
@@ -37,7 +38,14 @@ int		normalizer_arry(t_stack *a, t_data *data);
 
 /* utils */
 int		update_head(int a, int b);
+int		validate_sorted(t_stack *a);
+int		freedi(t_stack *a, t_stack *b);
+int		limits(t_data *data, t_stack *b);
+void	move_target(t_stack *a, t_stack *b, int n, int s);
 
-void	sort_algorit(t_stack *a, t_stack *b, t_data *data);
+/* algorithm */
+void	sort_algorithm(t_stack *a, t_stack *b, t_data *data);
+void	runfirststep(t_stack *a, t_stack *b, t_data *data);
+void	return_a(t_stack *a, t_stack *b, t_data *data);
 
 #endif

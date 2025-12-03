@@ -6,54 +6,64 @@
 /*   By: aialonso <aialonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 11:36:47 by aialonso          #+#    #+#             */
-/*   Updated: 2025/11/30 18:30:42 by aialonso         ###   ########.fr       */
+/*   Updated: 2025/12/03 14:14:33 by aialonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-int	sortnum(int *num)
+int	sortnum(int *num, int size)
 {
 	int	n;
 	int	tem;
+	int	len;
 
-	n = 0;
-	while (num[n] && num[n + 1])
+	len = size;
+	while (len-- > 0)
 	{
-		if (num[n] > num[n + 1])
+		n = 0;
+		while ((size - 1) > n)
 		{
-			tem = num[n];
-			num[n] = num[n + 1];
-			num[n + 1] = tem;
-			n = 0;
+			if (num[n] > num[n + 1])
+			{
+				tem = num[n];
+				num[n] = num[n + 1];
+				num[n + 1] = tem;
+				continue ;
+			}
+			n++;
 		}
-		n++;
 	}
 	return (0);
 }
 
-void	scramble_numbers(t_stack *a, t_data *data, int *num)
+int	scramble_numbers(t_stack *a, t_data *data, int *num)
 {
 	int	n;
 	int	i;
 	int	count;
+	int	*index;
 
+	index = malloc((data->count) * sizeof(int));
+	if (!index)
+		return (-1);
 	n = -1;
-	i = -1;
 	count = data->count;
-	while (num[++n])
+	while (data->count > ++n)
 	{
-		while (a->stack[++i])
+		i = -1;
+		while (data->count > ++i)
 		{
 			if (num[n] == a->stack[i])
-			{
-				a->stack[i] = (data->count - count + 1);
-				count--;
-			}
+				index[i] = (data->count - count-- + 1);
 		}
-		i = -1;
 	}
+	i = -1;
+	while (data->count > ++i)
+		a->stack[i] = index[i];
+	free(index);
+	return (0);
 }
 
 int	normalizer_arry(t_stack *a, t_data *data)
@@ -65,11 +75,15 @@ int	normalizer_arry(t_stack *a, t_data *data)
 	num = malloc(data->count * sizeof(int));
 	if (!num)
 		return (-1);
-	while (a->stack[++n])
+	while (a->size > ++n)
 		num[n] = a->stack[n];
-	if (sortnum(num) == -1)
+	if (sortnum(num, a->size) == -1)
 		return (-1);
-	scramble_numbers(a, data, num);
+	if (scramble_numbers(a, data, num) == -1)
+	{
+		free(num);
+		return (-1);
+	}
 	free(num);
 	return (0);
 }

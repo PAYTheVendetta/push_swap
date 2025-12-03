@@ -6,39 +6,39 @@
 /*   By: aialonso <aialonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 13:33:25 by aialonso          #+#    #+#             */
-/*   Updated: 2025/11/30 22:58:00 by aialonso         ###   ########.fr       */
+/*   Updated: 2025/12/03 15:58:02 by aialonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 
-void	swap(t_stack *x)
+int	swap(t_stack *x)
 {
 	int	tem;
 
 	if (x->maxnum <= 1)
-		return ;
+		return (-1);
 	tem = x->stack[x->head];
 	x->stack[x->head] = x->stack[x->head + 1];
 	x->stack[x->head + 1] = tem;
+	return (0);
 }
 
 void	sa(t_stack *a)
 {
-	swap(a);
-	ft_printf("sa\n");
+	if (swap(a) == 0)
+		ft_printf("sa\n");
 }
 
 void	sb(t_stack *b)
 {
-	swap(b);
-	ft_printf("sb\n");
+	if (swap(b) == 0)
+		ft_printf("sb\n");
 }
 
 void	ss(t_stack *a, t_stack *b)
 {
-	swap(a);
-	swap(b);
-	ft_printf("ss\n");
+	if ((swap(a) == 0) && (swap(b) == 0))
+		ft_printf("ss\n");
 }

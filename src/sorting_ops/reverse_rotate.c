@@ -6,20 +6,20 @@
 /*   By: aialonso <aialonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 13:33:12 by aialonso          #+#    #+#             */
-/*   Updated: 2025/11/30 22:57:45 by aialonso         ###   ########.fr       */
+/*   Updated: 2025/12/03 15:57:58 by aialonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 
-void	reverse_rotate(t_stack *x)
+int	reverse_rotate(t_stack *x)
 {
 	int	tem;
 	int	n;
 
 	if (x->maxnum <= 1)
-		return ;
+		return (-1);
 	n = x->maxnum - 1;
 	tem = x->stack[x->head + n];
 	while (n > 0)
@@ -28,23 +28,23 @@ void	reverse_rotate(t_stack *x)
 		n--;
 	}
 	x->stack[x->head] = tem;
+	return (0);
 }
 
 void	rra(t_stack *a)
 {
-	reverse_rotate(a);
-	ft_printf("rra\n");
+	if (reverse_rotate(a) == 0)
+		ft_printf("rra\n");
 }
 
 void	rrb(t_stack *b)
 {
-	reverse_rotate(b);
-	ft_printf("rrb\n");
+	if (reverse_rotate(b) == 0)
+		ft_printf("rrb\n");
 }
 
 void	rrr(t_stack *a, t_stack *b)
 {
-	reverse_rotate(a);
-	reverse_rotate(b);
-	ft_printf("rrr\n");
+	if ((reverse_rotate(a) == 0) && (reverse_rotate(b) == 0))
+		ft_printf("rrr\n");
 }
