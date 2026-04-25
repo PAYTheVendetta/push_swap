@@ -39,10 +39,16 @@ You have two stacks: **A** and **B**. Stack A starts with a random list of integ
 
 ---
 
-## Algorithm
+## Algorithm — KSort (chunk-based)
 
-- **Small sets (≤ 5):** hardcoded optimal sorting
-- **Large sets:** chunk-based algorithm — numbers are divided into chunks and pushed to B in order, then reassembled into A
+This implementation uses a **chunk-based algorithm (KSort)** that divides the numbers into ranges and pushes them to stack B in chunks:
+
+- Numbers are divided into ranges (chunks)
+- **Default chunk size: 15** for small sets
+- **Chunk size increases to 30** for sets larger than 100 elements
+- Once all elements are in B sorted by range, they are reassembled back into A in order
+
+This approach minimizes the total number of operations by working on groups of numbers rather than individual elements.
 
 ---
 
@@ -63,7 +69,15 @@ make re     # full rebuild
 ./push_swap 3 1 4 1 5 9 2 6
 ```
 
-### Checking the result
+### Quick performance test
+
+```bash
+make test X=500 | wc -c
+```
+
+> Generates `X` random numbers, runs push_swap, and counts the total characters of output (proportional to number of operations). Lower is better.
+
+### Checking correctness
 
 ```bash
 ARG="3 1 4 1 5 9 2 6"
@@ -72,14 +86,30 @@ ARG="3 1 4 1 5 9 2 6"
 
 Output will be `OK` if sorted correctly, `KO` if not.
 
+### Visualizer
+
+You can see the algorithm in action using the [push_swap visualizer](https://push-swap42-visualizer.vercel.app/) — paste your output and watch the stacks move.
+
+---
+
+## Performance
+
+| Elements | Max operations (to pass) |
+|---|---|
+| 3 | ≤ 3 |
+| 5 | ≤ 12 |
+| 100 | ≤ 700 |
+| 500 | ≤ 5500 |
+
 ---
 
 ## What I Learned
 
 - Algorithm design and optimization
 - Stack data structure in C
-- Thinking about complexity and move efficiency
-- Parsing and input validation
+- Chunk-based sorting strategy
+- Complexity analysis and move efficiency
+- Input parsing and validation
 
 ---
 
